@@ -240,3 +240,217 @@ u('.btnmenos').handle('click',(e)=>{
 
 })
 initProduct()
+
+u('.btndesc').handle('click', (e)=>{
+    
+    u('.btnmayorprice').removeClass('text-bg-secondary p-3')
+    u('.btnmenorprice').removeClass('text-bg-secondary p-3')
+    u('.btnaz').removeClass('text-bg-secondary p-3')
+    u('.btnza').removeClass('text-bg-secondary p-3')
+    u('.btndesc').addClass('text-bg-secondary p-3')    
+    u('div.container div.card').siblings().remove()  
+    fetch(products+`?desc=si`)
+    .then(res => res.json())
+    .then(data => {
+        contenedorProduct= u('div.container div.card')
+        contenedorProduct.siblings().remove()
+        let cart = JSON.parse(window.sessionStorage.getItem('cart'))
+        // console.log(data)     
+        data.forEach(product => {
+        let image ='./img/product.png'
+        let cloncard = contenedorProduct.clone()
+        if ( product.url_image != null && product.url_image != '' ) {
+            image = product.url_image
+        }
+        cloncard.find('.card-title').text(`${product.name}`)
+        if(product.discount > 0){
+            cloncard.find('.card-text').text(`Precio:$${product.price} Desc:$${product.discount} `)
+        }else{
+            cloncard.find('.card-text').text(`$${product.price} `)
+        }
+        cloncard.find('img').attr('src', `${image}`)       
+        cloncard.find('input').attr('value' , `${product.id}`)
+        const container = u('<div>').addClass('col-lg-3 col-md-6 pt-4')
+        u('#containerProducts .row').append(container)
+        if ( cart.items[product.id] ){
+            cloncard.find('.btn-cart').toggleClass('btn-primary btn-danger')
+            cloncard.find('.btn-cart').attr('title', 'Eliminar del carrito')  
+        }else{
+            cloncard.find('.btn-cart').attr('title', 'Agregarar del carrito')
+        }
+        cloncard.removeClass('d-none')
+        container.append(cloncard)
+    });   
+    })
+})
+
+u('.btnmenorprice').handle('click', (e)=>{
+    u('.btnmayorprice').removeClass('text-bg-secondary p-3')
+    u('.btnaz').removeClass('text-bg-secondary p-3')
+    u('.btnza').removeClass('text-bg-secondary p-3')
+    u('.btndesc').removeClass('text-bg-secondary p-3') 
+    u('.btnmenorprice').addClass('text-bg-secondary p-3')
+    u('div.container div.card').siblings().remove()  
+    fetch(products+`?order=price&sort=asc`)
+    .then(res => res.json())
+    .then(data => {
+        contenedorProduct= u('div.container div.card')
+        contenedorProduct.siblings().remove()
+        let cart = JSON.parse(window.sessionStorage.getItem('cart'))
+        // console.log(data)     
+        data.forEach(product => {
+            let image ='./img/product.png'
+            let cloncard = contenedorProduct.clone()
+        if ( product.url_image != null && product.url_image != '' ) {
+            image = product.url_image
+        }
+        cloncard.find('.card-title').text(`${product.name}`)
+        if(product.discount > 0){
+            cloncard.find('.card-text').text(`Precio:$${product.price} Desc:$${product.discount} `)
+        }else{
+            cloncard.find('.card-text').text(`$${product.price} `)
+        }
+        cloncard.find('img').attr('src', `${image}`)       
+        cloncard.find('input').attr('value' , `${product.id}`)
+        const container = u('<div>').addClass('col-lg-3 col-md-6 pt-4')
+        u('#containerProducts .row').append(container)
+        if ( cart.items[product.id] ){
+            cloncard.find('.btn-cart').toggleClass('btn-primary btn-danger')
+            cloncard.find('.btn-cart').attr('title', 'Eliminar del carrito')  
+        }else{
+            cloncard.find('.btn-cart').attr('title', 'Agregarar del carrito')
+        }
+        cloncard.removeClass('d-none')
+        container.append(cloncard)
+    });   
+})
+})
+u('.btnmayorprice').handle('click', (e)=>{
+    u('.btnmenorprice').removeClass('text-bg-secondary p-3')
+    u('.btnaz').removeClass('text-bg-secondary p-3')
+    u('.btnza').removeClass('text-bg-secondary p-3')
+    u('.btndesc').removeClass('text-bg-secondary p-3') 
+    u('.btnmayorprice').addClass('text-bg-secondary p-3')
+    u('div.container div.card').siblings().remove()  
+    fetch(products+`?order=price&sort=desc`)
+    .then(res => res.json())
+    .then(data => {
+        contenedorProduct= u('div.container div.card')
+        contenedorProduct.siblings().remove()
+        let cart = JSON.parse(window.sessionStorage.getItem('cart'))
+        // console.log(data)     
+        data.forEach(product => {
+        let image ='./img/product.png'
+        let cloncard = contenedorProduct.clone()
+        if ( product.url_image != null && product.url_image != '' ) {
+            image = product.url_image
+        }
+        cloncard.find('.card-title').text(`${product.name}`)
+        if(product.discount > 0){
+            cloncard.find('.card-text').text(`Precio:$${product.price} Desc:$${product.discount} `)
+        }else{
+            cloncard.find('.card-text').text(`$${product.price} `)
+        }
+        cloncard.find('img').attr('src', `${image}`)       
+        cloncard.find('input').attr('value' , `${product.id}`)
+        const container = u('<div>').addClass('col-lg-3 col-md-6 pt-4')
+        u('#containerProducts .row').append(container)
+        if ( cart.items[product.id] ){
+            cloncard.find('.btn-cart').toggleClass('btn-primary btn-danger')
+            cloncard.find('.btn-cart').attr('title', 'Eliminar del carrito')  
+        }else{
+            cloncard.find('.btn-cart').attr('title', 'Agregarar del carrito')
+        }
+        cloncard.removeClass('d-none')
+        container.append(cloncard)
+    });   
+})
+})
+u('.btnaz').handle('click', (e)=>{
+    u('.btnmayorprice').removeClass('text-bg-secondary p-3')
+    u('.btnmenorprice').removeClass('text-bg-secondary p-3')
+    u('.btnza').removeClass('text-bg-secondary p-3')
+    u('.btndesc').removeClass('text-bg-secondary p-3') 
+    u('.btnaz').addClass('text-bg-secondary p-3')
+    u('div.container div.card').siblings().remove()  
+    fetch(products+`?order=name&sort=asc`)
+    .then(res => res.json())
+    .then(data => {
+        contenedorProduct= u('div.container div.card')
+        contenedorProduct.siblings().remove()
+        let cart = JSON.parse(window.sessionStorage.getItem('cart'))
+        // console.log(data)     
+        data.forEach(product => {
+        let image ='./img/product.png'
+        let cloncard = contenedorProduct.clone()
+        if ( product.url_image != null && product.url_image != '' ) {
+            image = product.url_image
+        }
+        cloncard.find('.card-title').text(`${product.name}`)
+        if(product.discount > 0){
+            cloncard.find('.card-text').text(`Precio:$${product.price} Desc:$${product.discount} `)
+        }else{
+            cloncard.find('.card-text').text(`$${product.price} `)
+        }
+        cloncard.find('img').attr('src', `${image}`)       
+        cloncard.find('input').attr('value' , `${product.id}`)
+        const container = u('<div>').addClass('col-lg-3 col-md-6 pt-4')
+        u('#containerProducts .row').append(container)
+        if ( cart.items[product.id] ){
+            cloncard.find('.btn-cart').toggleClass('btn-primary btn-danger')
+            cloncard.find('.btn-cart').attr('title', 'Eliminar del carrito')  
+        }else{
+            cloncard.find('.btn-cart').attr('title', 'Agregarar del carrito')
+        }
+        cloncard.removeClass('d-none')
+        container.append(cloncard)
+    });   
+})
+})
+
+u('.btnza').handle('click', (e)=>{
+    u('.btnmayorprice').removeClass('text-bg-secondary p-3')
+    u('.btnmenorprice').removeClass('text-bg-secondary p-3')
+    u('.btnaz').removeClass('text-bg-secondary p-3')
+    u('.btndesc').removeClass('text-bg-secondary p-3') 
+    u('.btnza').addClass('text-bg-secondary p-3')
+    u('div.container div.card').siblings().remove()  
+    fetch(products+`?order=name&sort=desc`)
+    .then(res => res.json())
+    .then(data => {
+        contenedorProduct= u('div.container div.card')
+        contenedorProduct.siblings().remove()
+        let cart = JSON.parse(window.sessionStorage.getItem('cart'))
+        // console.log(data)     
+        data.forEach(product => {
+        let image ='./img/product.png'
+        let cloncard = contenedorProduct.clone()
+        if ( product.url_image != null && product.url_image != '' ) {
+            image = product.url_image
+        }
+        cloncard.find('.card-title').text(`${product.name}`)
+        if(product.discount > 0){
+            cloncard.find('.card-text').text(`Precio:$${product.price} Desc:$${product.discount} `)
+        }else{
+            cloncard.find('.card-text').text(`$${product.price} `)
+        }
+        cloncard.find('img').attr('src', `${image}`)       
+        cloncard.find('input').attr('value' , `${product.id}`)
+        const container = u('<div>').addClass('col-lg-3 col-md-6 pt-4')
+        u('#containerProducts .row').append(container)
+        if ( cart.items[product.id] ){
+            cloncard.find('.btn-cart').toggleClass('btn-primary btn-danger')
+            cloncard.find('.btn-cart').attr('title', 'Eliminar del carrito')  
+        }else{
+            cloncard.find('.btn-cart').attr('title', 'Agregarar del carrito')
+        }
+        cloncard.removeClass('d-none')
+        container.append(cloncard)
+        });   
+    })
+})
+/*
+https://salva-bsale-api.herokuapp.com/products?order=price
+https://salva-bsale-api.herokuapp.com/products?order=name
+https://salva-bsale-api.herokuapp.com/products?desc=si
+*/ 
