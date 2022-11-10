@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"/>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand"><img src="https://dojiw2m9tvv09.cloudfront.net/4/8/img-logos-logo-bsale-naranjo.png?3035" width="100px"/></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+            <li class="nav-item btnhome"><a class="nav-link active" aria-current="page" href="#" >Home</a></li><li class="nav-item">
+            <a class="nav-link btncartmodal" type="button" data-bs-toggle="modal" data-bs-target="#modal-cart">Carrito</a>
+            </li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
+              <!-- Clonar y llenar con categorias -->
+              <ul class="dropdown-menu" id="contCategory">
+                <li id="listCategory" class="d-none"><a class="dropdown-item" type="button"></a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="busqueda form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btnbuscar btn btn-outline-success" type="submit">
+              Buscar
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+<!-- cards -->
+<div class="container">
+  <div id="containerProducts" class="my-5">
+    <div class="row align-items-center text-center">
+      <div class="card d-none shadow p-3 mb-5 bg-body rounded" style="width: 18rem ">
+        <div class="card-image-top">
+          <img class="card-img-top py-2" style="width: 130px" />
+        </div>
+        <div class="card-body">
+          <input type="hidden" name="product_id">
+          <h5 class="card-title"></h5>
+          <p class="card-text"></p>
+          <a class="btn-cart btn btn-primary"><i class="bi bi-cart"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Modal -->
+<div class="modal fade" id="modal-cart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Carrito de compras</h1><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body "><!-- Scrollable modal -->
+            <ul class="containermo  list-group list-group-numbered "><!--  ----------lista dentro del modal------- -->
+              <li class="clo d-none list-group-item d-flex justify-content-between align-items-start">          
+                <div class="ms-2  container text-start"> 
+                  <div class="fw-bold  container">         
+                  </div>
+                    <div class="row row-cols-5" >
+                      <div class="col-md-3" >
+                        <i class=" btnmenos bi bi-arrow-down-square" type="button"></i>
+                      </div>
+                      <div class=" cantidad col-md-3" >
+                        <input type="hidden" name="cantidadproductos"> 
+                        <input type="hidden" name="art_id"> 
+                      </div>
+                      <div class="col-md-3">
+                        <i class="btnmas bi bi-arrow-up-square" type="button"></i>
+                      </div>
+                    </div>
+                </div>
+                
+                <span class="badge bg-primary rounded-pill"></span>
+              </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btnclose btn btn-secondary" data-bs-dismiss="modal">Close</button>   
+        </div>
+    </div>  
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    
+    <div class="toast-header">
+      <img src="https://dojiw2m9tvv09.cloudfront.net/4/8/img-logos-logo-bsale-naranjo.png?3035" style="width: 20% ; "
+      class="rounded me-2" alt="...">
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+
+    <div class="toast-body">
+     
+    </div>
+
+  </div>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/umbrellajs"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
