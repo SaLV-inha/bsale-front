@@ -27,7 +27,7 @@ fetch(categories)
 
 let initProduct = () =>{
     fetch(products)
-.then(res => res.json())
+    .then(res => res.json())
 .then(data => {
     contenedorProduct= u('#containerProducts div.d-none')
     contenedorProduct.siblings().remove()
@@ -57,6 +57,11 @@ let initProduct = () =>{
         cloncard.removeClass('d-none')
         container.append(cloncard)
     });   
+    u('.btnmayorprice').removeClass('text-bg-secondary p-3')
+    u('.btnmenorprice').removeClass('text-bg-secondary p-3')
+    u('.btnaz').removeClass('text-bg-secondary p-3')
+    u('.btnza').removeClass('text-bg-secondary p-3')
+    u('.btndesc').removeClass('text-bg-secondary p-3') 
 })
 
 
