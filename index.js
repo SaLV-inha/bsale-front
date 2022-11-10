@@ -1,5 +1,5 @@
-const products = 'http://127.0.0.1:1109/products'
-const categories = 'http://127.0.0.1:1109/category'
+const products = 'https://salva-bsale-api.herokuapp.com/products'
+const categories = 'https://salva-bsale-api.herokuapp.com/category'
 const cont = document.getElementById('container')
 const toastLiveExample = document.getElementById('liveToast')
 
