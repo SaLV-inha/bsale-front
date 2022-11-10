@@ -216,8 +216,8 @@ u('.btnmas').handle('click',(e)=>{
 u('.btnmenos').handle('click',(e)=>{
     let id = u(e.target).closest('li').data('id')
     let lista = JSON.parse(window.sessionStorage.getItem('cart'))
+    let total = u(e.target).closest('li').find('.badge')
     if (lista.items[id].quantity<2){
-        let total = u(e.target).closest('li').find('.badge')
         delete lista.items[id]
         window.sessionStorage.setItem('cart', JSON.stringify(lista))
         let container = u(e.target).closest('ul')
